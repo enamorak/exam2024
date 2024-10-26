@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% block content %}
+<h1>Добавить книгу</h1>
+<form method="POST">
+    <div class="form-group">
+        <label for="title">Название:</label>
+        <input type="text" class="form-control" id="title" name="title" required>
+    </div>
+    <div class="form-group">
+        <label for="description">Описание:</label>
+        <textarea class="form-control" id="description" name="description" required></textarea>
+    </div>
+    <div class="form-group">
+        <label for="year">Год:</label>
+        <input type="number" class="form-control" id="year" name="year" required>
+    </div>
+    <div class="form-group">
+        <label for="publisher">Издатель:</label>
+        <input type="text" class="form-control" id="publisher" name="publisher" required>
+    </div>
+    <div class="form-group">
+        <label for="author">Автор:</label>
+        <input type="text" class="form-control" id="author" name="author" required>
+    </div>
+    <div class="form-group">
+        <label for="pages">Количество страниц:</label>
+        <input type="number" class="form-control" id="pages" name="pages" required>
+    </div>
+    <div class="form-group">
+        <label for="cover">Обложка:</label>
+        <input type="file" class="form-control-file" id="cover" name="cover">
+    </div>
+    <div class="form-group">
+        <label for="genres">Жанры:</label>
+        <select class="form-control" id="genres" name="genres" multiple>
+            {% for genre in genres %}
+                <option value="{{ genre.id }}">{{ genre.name }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Добавить</button>
+</form>
+{% endblock %}

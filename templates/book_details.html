@@ -1,6 +1,27 @@
 {% extends 'base.html' %}
 {% block content %}
-<h1>Book Title</h1>
-<!-- Здесь будет информация о книге -->
-<p>Здесь будет информация о книге</p>
+<h1>{{ book.title }}</h1>
+<p>{{ book.description }}</p>
+<p>Автор: {{ book.author }}</p>
+<p>Год: {{ book.year }}</p>
+<p>Издатель: {{ book.publisher }}</p>
+<p>Жанр:
+    {% for genre in book.genres %}
+        {{ genre.name }}
+    {% endfor %}
+</p>
+<p>Средняя оценка: {{ average_rating|round(1) }}</p>
+
+<h2>Рецензии</h2>
+<ul>
+  {% for review in reviews %}
+  <li>
+    <p>{{ review.text }}</p>
+    <p>Оценка: {{ review.rating }}</p>
+    <p>Автор: {{ review.user.username }}</p>
+    <p>Дата: {{ review.date_added.strftime('%Y-%m-%d') }}</p>
+  </li>
+  {% endfor %}
+</ul>
+
 {% endblock %}
